@@ -82,8 +82,8 @@ while True:
     player_score_text = FONT.render(str(player_score), True, "white")
     opponent_score_text = FONT.render(str(opponent_score), True, "white")
 
-    ball.x += x_speed * 20
-    ball.y += y_speed * 20
+    ball.x += x_speed * 25
+    ball.y += y_speed * 25
 
     SCREEN.fill("Black")
 
