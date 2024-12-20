@@ -74,18 +74,18 @@ while True:
                 current_state = GAME
 
     elif current_state == GAME:
-        frame, center_left, center_right = object_tracking(capture, HEIGHT)
+        frame, center_left, center_right, combined_frame_annotated = object_tracking(capture, HEIGHT)
 
         # Update player one paddle position
-        if center_left and center_left[1] is not None:
-            player.centery = center_left[1]
+        if center_right and center_right[1] is not None:
+            player.centery = center_right[1]
 
         # confines paddle to screen bounds
         player.top = max(0, min(player.top, HEIGHT - player.height))
 
         # Update player 2 (opponent) paddle position
-        if center_right and center_right[1] is not None:
-            opponent.centery = center_right[1]
+        if center_left and center_left[1] is not None:
+            opponent.centery = center_left[1]
 
         # confines paddle to screen bounds
         opponent.top = max(0, min(opponent.top, HEIGHT - opponent.height))
@@ -124,7 +124,7 @@ while True:
 
         # Display camera tracking
         if frame is not None:
-            cv2.imshow("Object Tracking", frame)
+            cv2.imshow("Object Tracking", combined_frame_annotated)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
