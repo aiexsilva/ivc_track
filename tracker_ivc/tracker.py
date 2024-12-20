@@ -20,7 +20,7 @@ def map_object_to_screen(y_obj, y_min_orig, y_max_orig, y_screen_min, y_screen_m
     proportional_factor = (y_obj - y_min_orig) / (y_max_orig - y_min_orig)
 
     # Adjust offset based on object position in the in interval
-    # When the object is at the topo, offset is reduced
+    # When the object is at the top, offset reduces
     # When object is at the bottom, offset increases
     D = offset * (2 * proportional_factor - 1)
 
